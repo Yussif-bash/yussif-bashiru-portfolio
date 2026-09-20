@@ -27,13 +27,17 @@
     </div>
 
     <!-- Optional Contact Form -->
-    <form class="max-w-xl mx-auto space-y-6 animate-fadeInUp">
-      <input type="text" placeholder="Your Name" class="contact-input w-full">
-      <input type="email" placeholder="Your Email" class="contact-input w-full">
-      <textarea placeholder="Your Message" class="contact-input w-full h-36"></textarea>
-      <button type="submit" class="contact-btn bg-indigo-600 hover:bg-indigo-700 w-full">
-        Send Message
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="max-w-xl mx-auto space-y-6 animate-fadeInUp">
+      <input type="text" formControlName="name" placeholder="Your Name" class="contact-input w-full">
+      <input type="email" formControlName="email" placeholder="Your Email" class="contact-input w-full">
+      <textarea formControlName="message" placeholder="Your Message" class="contact-input w-full h-36"></textarea>
+
+      <button type="submit" [disabled]="submitting" class="contact-btn bg-indigo-600 hover:bg-indigo-700 w-full">
+        {{ submitting ? 'Sending...' : 'Send Message' }}
       </button>
+
+      <p *ngIf="submitted" class="text-green-400">Thanks for reaching out — I'll get back to you soon.</p>
+      <p *ngIf="submitError" class="text-red-400">Something went wrong — try again, or email me directly.</p>
     </form>
 
   </div>
