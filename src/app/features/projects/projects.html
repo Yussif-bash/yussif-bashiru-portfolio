@@ -1,106 +1,46 @@
-<section class="py-12 px-6 md:px-16 bg-[#111111] text-white" id="projects">
-  <div class="max-w-6xl mx-auto">
+<section class="py-16 px-6 relative bg-[#111111] text-white" id="projects">
+  <h2 class="text-3xl font-bold text-center mb-10">Projects</h2>
 
-    <!-- Section Title -->
-    <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">
-      Projects
-    </h2>
+  <div class="relative max-w-6xl mx-auto p-6">
+    <!-- Prev button -->
+    <button
+      (click)="scrollByCard(-1)"
+      aria-label="Previous project"
+      class="hidden md:flex items-center justify-center absolute -left-5 top-1/2 -translate-y-1/2 z-10
+             w-10 h-10 rounded-full bg-gray-900 border border-gray-700 hover:border-indigo-500 hover:text-indigo-500 transition">
+      ‹
+    </button>
 
-    <!-- Projects Grid -->
-    <div class="grid md:grid-cols-2 gap-8">
-
-      <!-- Project Card -->
-      <div class="project-card animate-fadeInUp">
-        <img src="images/featured-product.png" alt="Arahadeals Project" class="rounded-xl mb-4 w-full h-52 object-cover">
-        <h3 class="text-xl text-indigo-500 font-semibold mb-2">Arahadeals Featured Products</h3>
-        <p class="text-gray-300 mb-4">
-          Developed dynamic product display and state management using Angular Signals,
-          improving UI responsiveness and performance.
-        </p>
-        <div class="flex gap-2 flex-wrap mb-4">
-          <span class="tech-badge">Angular</span>
-          <span class="tech-badge">TypeScript</span>
-          <span class="tech-badge">RxJS</span>
-          <span class="tech-badge">TailwindCSS</span>
-        </div>
-        <div class="flex gap-4">
-          <a href="https://arahadeals.com" target="_blank" class="project-btn bg-indigo-600 hover:bg-indigo-700">Live Demo</a>
-          <a href="https://github.com/NICS-Solutions/arahadeals_frontend/pull/293" target="_blank"
-            class="project-btn border border-gray-600 hover:border-indigo-500 hover:text-indigo-500">GitHub</a>
-        </div>
-      </div>
-      
-      <!-- admin activity log -->
-    <div class="project-card animate-fadeInUp bg-gray-900 p-6 rounded-xl shadow-lg">
-      <img src="images/admin-activity-log.png" alt="Arahadeals Admin Activity Log"
-        class="rounded-xl mb-4 w-full h-52 object-cover">
-    
-      <h3 class="text-xl text-indigo-500 font-semibold mb-2">
-        Arahadeals Admin Activity Log
-      </h3>
-    
-      <p class="text-gray-300 mb-4 text-sm md:text-base">
-        Developed a real-time admin activity log feature using Angular Signals to track
-        user and system actions efficiently. Enhanced UI responsiveness and performance,
-        while building reusable and scalable components for improved administrative oversight.
-      </p>
-    
-      <div class="flex gap-2 flex-wrap mb-4">
-        <span class="tech-badge">Angular</span>
-        <span class="tech-badge">TypeScript</span>
-        <span class="tech-badge">RxJS</span>
-        <span class="tech-badge">TailwindCSS</span>
-      </div>
-    
-      <div class="flex gap-4">
-        <a href="https://arahadeals.com" target="_blank"
-          class="project-btn bg-indigo-600 hover:bg-indigo-700 transition px-4 py-2 rounded">
-          Live Demo
-        </a>
-        <a href="https://github.com/NICS-Solutions/arahadeals_frontend/pull/293" target="_blank"
-          class="project-btn border border-gray-600 hover:border-indigo-500 hover:text-indigo-500 transition px-4 py-2 rounded">
-          GitHub
-        </a>
-      </div>
+    <!-- Track -->
+    <div
+      #track
+      class="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar pb-4">
+     <div
+  *ngFor="let project of projects"
+  class="project-card snap-center shrink-0 w-[75%] sm:w-[45%] lg:w-[30%]
+         bg-gray-900 p-4 rounded-xl shadow-lg animate-fadeInUp flex flex-col">
+  <img [src]="project.image" [alt]="project.title" class="rounded-lg mb-3 w-full h-36 object-fit">
+  <h3 class="text-base font-semibold text-indigo-500 mb-1">{{ project.title }}</h3>
+  <p class="text-gray-300 mb-3 text-xs line-clamp-2">{{ project.description }}</p>
+  <div class="flex gap-1.5 flex-wrap mb-3">
+    <span *ngFor="let tag of project.tags" class="tech-badge text-[10px] py-0.5 px-2">{{ tag }}</span>
+  </div>
+  <div class="flex gap-2 mt-auto">
+    <a [href]="project.liveUrl" target="_blank"
+       class="project-btn bg-indigo-600 hover:bg-indigo-700 transition px-3 py-1.5 rounded text-xs">Live Demo</a>
+    <a [href]="project.githubUrl" target="_blank"
+       class="project-btn border border-gray-600 hover:border-indigo-500 hover:text-indigo-500 transition px-3 py-1.5 rounded text-xs">GitHub</a>
+  </div>
+</div>
     </div>
 
-      <!-- online barber shop -->
-      <div class="project-card animate-fadeInUp bg-gray-900 p-6 rounded-xl shadow-lg">
-        <img src="images/online-barber-shop.png" alt="Online Barber Shop Project"
-          class="rounded-xl mb-4 w-full h-52 object-cover">
-      
-        <h3 class="text-xl text-indigo-500 font-semibold mb-2">
-          Online Barber Shop
-        </h3>
-      
-        <p class="text-gray-300 mb-4 text-sm md:text-base">
-          Built a full-featured online barber shop platform with Angular, enabling users
-          to browse services, book appointments, and interact with a dynamic UI. Leveraged
-          **Angular Signals and RxJS** for efficient state management and smooth performance.
-        </p>
-      
-        <div class="flex gap-2 flex-wrap mb-4">
-          <span class="tech-badge">Angular</span>
-          <span class="tech-badge">TypeScript</span>
-          <span class="tech-badge">RxJS</span>
-          <span class="tech-badge">TailwindCSS</span>
-        </div>
-      
-        <div class="flex gap-4">
-          <a href="https://online-barbershop-project-1.netlify.app/" target="_blank"
-            class="project-btn bg-indigo-600 hover:bg-indigo-700 transition px-4 py-2 rounded">
-            Live Demo
-          </a>
-          <a href="https://github.com/Alaska-gh/online-barber-shop-project" target="_blank"
-            class="project-btn border border-gray-600 hover:border-indigo-500 hover:text-indigo-500 transition px-4 py-2 rounded">
-            GitHub
-          </a>
-        </div>
-      </div>
-
-      <!-- Add more projects here -->
-      <!-- Repeat project-card for each project -->
-
-    </div>
+    <!-- Next button -->
+    <button
+      (click)="scrollByCard(1)"
+      aria-label="Next project"
+      class="hidden md:flex items-center justify-center absolute -right-5 top-1/2 -translate-y-1/2 z-10
+             w-10 h-10 rounded-full bg-gray-900 border border-gray-700 hover:border-indigo-500 hover:text-indigo-500 transition">
+      ›
+    </button>
   </div>
 </section>
